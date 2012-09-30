@@ -1,0 +1,11 @@
+.aside1{
+	position:fixed;
+}
+
+.hide{
+	display:none;
+}
+
+.tei{
+	border-bottom: 1px #2A85E8 dotted;
+}

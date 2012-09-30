@@ -1,89 +1,75 @@
 <?php head(); ?>
 
+<div class="container">
+<div id="primary" class="content">
 
-<div id="primary"  class="content">
-<?php if (get_theme_option('Homepage Text')): ?>
-<p><?php echo get_theme_option('Homepage Text'); ?></p>
-<?php endif; ?>
-
-<!-- Featured Collection -->
-<div class="row">
-<div class="twelve columns">
-
-			<div class="panel">
-			<div id="featured">
-	<?php if (get_theme_option('Display Featured Collection')): ?>
-
-	<div id="featured-collection">
-	<div><?php echo display_random_featured_collection(); ?></div>
-	</div>
-	
-</div>
-	</div>
-
-<?php endif; ?>
-	<!-- end featured collection -->
-	
-<!-- Featured Item -->
-
-<?php if (get_theme_option('Display Featured Item') == 1): ?>
-
-
-
-<div class="row">
-  <div id="featured-items" class="six columns">
-
-	<?php echo display_random_featured_item(); ?>
-</div>
-
-
-<?php endif; ?>
-<!--end featured-item-->
-
-<!-- Recent Items -->
-<div id="recent-items" class="six columns">
-	<h2>Recently Added Items</h2>
-
-	<?php
-$homepageRecentItems = (int)get_theme_option('Homepage Recent Items') ? get_theme_option('Homepage Recent Items') : '3';
-set_items_for_loop(recent_items($homepageRecentItems));
-if (has_items_for_loop()):
-?>
-	<ul class="items-list">
-	<?php while (loop_items()): ?>
-	<li class="item">
-		<h3><?php echo link_to_item(); ?></h3>
-		<?php if($itemDescription = item('Dublin Core', 'Description', array('snippet'=>150))): ?>
-			<p class="item-description"><?php echo $itemDescription; ?></p>
-		<?php endif; ?>
-	</li>
-	<?php endwhile; ?>
-	</ul>
-	<?php else: ?>
-	<p>No recent items available.</p>
-	<?php endif; ?>
-	<p class="view-items-link"><?php echo link_to_browse_items('View All Items'); ?></p>
-
-
-</div>
-</div>
-<!-- end recent-items -->
-
+	<div class="row">
+		<div class="twelve columns">
 		
-	<!-- Featured Exhibit -->
+		<div id="showholder">
+					<div id="featuredimgs"> 
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+	<?php $item = random_featured_item(true); set_current_item($item); echo item_fullsize($props = imgslide ,$index = 0, $item = null ); ?>	
+				
+					</div>
+				
+				</div>
+		</div>
+	</div>
+
+	
 	
 	<div class="row">
+		<div class="twelve columns">
+			<div class="panel">	
+				<h2>About the Project</h2>
+				<?php if ($homepageDescription = settings('description')): ?>
+				<p><?php echo $homepageDescription; ?></p>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="twelve columns">
+			<div class="panel">	
+				<div id="recent-collections">
+					<h2>Recent Collections</h2>
+			 
+					<?php if (has_collections()): ?>
+					<?php set_collections_for_loop(recent_collections(7)); ?>
+			 
+					<ul class="collections-list">
+						<?php while (loop_collections()): ?>
+			 
+							<li class="collection">
+								<h4><?php echo link_to_collection(); ?></h4>
+								<p class="collection-description"><?php echo collection('Description', array('snippet'=>150)); ?></p>
+							</li>
+			 
+						<?php endwhile; ?>
+					</ul>
+			 
+					<?php else: ?>
+			 
+					<p>No recent collections available.</p>	
+			 
+					<?php endif; ?>
+				</div><!-- end recent-collections -->
 
+			</div>
+		</div>
+	</div>	
 
-<?php if ((get_theme_option('Display Featured Exhibit')) && function_exists('exhibit_builder_display_random_featured_exhibit')): ?>
+</div>
 </div>
 
-
-<?php echo exhibit_builder_display_random_featured_exhibit(); ?>
-<?php endif; ?>
-</div>
-	<!-- End featured Exhibit -->
-
-</div>
 <footer>
 <?php foot(); ?></footer>
