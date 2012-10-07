@@ -26,7 +26,13 @@
 
         <div class="item hentry">
 
-<?php if (function_exists('tei_display_installed')){ echo render_tei_files($item->id,  $_GET['section']); } ?>
+<?php 
+    if (function_exists('tei_display_installed')){ 
+        $section = !empty($_GET['section']) ? $_GET['section'] : false;
+        
+        echo render_tei_files($item->id,  $section); 
+    } 
+?>
             
         </div><!-- end item hentry --> 
 
