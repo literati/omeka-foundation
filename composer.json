@@ -1,3 +1,4 @@
 {
-    "name": "literati/omeka-foundation"
+    "name": "literati/omeka-foundation",
+    "type": "omeka-theme"
 }
